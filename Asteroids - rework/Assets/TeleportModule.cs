@@ -7,17 +7,44 @@ public class TeleportModule : MonoBehaviour {
 
     public int cooldown;
 
-    private float time;
+    private float timeCooldown;
 
-	// Use this for initialization
-	void Start () {
-        float time = Time.time;
-	}
+    private int displayCooldown;
+    private float displayTimer;
+
+    bool teleportEnabled = false;
+
+    // Use this for initialization
+    void Start () {
+        float timeCooldown = Time.time;
+        GameObject.Find("InvincibleCooldown").GetComponent<UnityEngine.UI.Text>().text = cooldown.ToString();
+        float displayTimer = Time.time;
+        displayCooldown = cooldown;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Teleport") && cooldownTimer())
+        if (Input.GetButtonDown("Teleport") && cooldownTimer(cooldown, timeCooldown))
+        {
             Teleport();
+            teleportEnabled = true;
+            timeCooldown = Time.time;
+
+        }
+        if (teleportEnabled)
+        {
+            displayCooldown = cooldown;
+            GameObject.Find("TeleportCooldown").GetComponent<UnityEngine.UI.Text>().text = displayCooldown.ToString();
+            teleportEnabled = false;
+        }
+
+        if (cooldownTimer(1f, displayTimer) && !teleportEnabled && displayCooldown > 0)
+        {
+            displayCooldown--;
+            GameObject.Find("TeleportCooldown").GetComponent<UnityEngine.UI.Text>().text = displayCooldown.ToString();
+            displayTimer = Time.time;
+        }
+        
     }
 
     public void Teleport()
@@ -33,9 +60,9 @@ public class TeleportModule : MonoBehaviour {
             GameObject.Find("TUES_PlayerShip").transform.position = mousePositionWorldSpace;
     }
 
-    bool cooldownTimer()
+    bool cooldownTimer(float offset, float time)
     {
-        if (Time.time >= time + cooldown)
+        if (Time.time >= time + offset)
         {
             time = Time.time;
             return true;

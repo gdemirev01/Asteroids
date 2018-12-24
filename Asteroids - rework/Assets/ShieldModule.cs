@@ -7,6 +7,9 @@ public class ShieldModule : MonoBehaviour {
     public int cooldown;
     public int duration;
 
+    private int displayCooldown;
+    private float displayTimer;
+
     bool shieldEnabled = false;
 
     private float timeCooldown;
@@ -16,6 +19,9 @@ public class ShieldModule : MonoBehaviour {
     void Start()
     {
         float timeCooldown = Time.time;
+        float displayTimer = Time.time;
+        displayCooldown = cooldown;
+        GameObject.Find("ShieldCooldown").GetComponent<UnityEngine.UI.Text>().text = cooldown.ToString();
     }
 
     // Update is called once per frame
@@ -30,9 +36,21 @@ public class ShieldModule : MonoBehaviour {
         if (cooldownTimer(duration, timeDuration) && shieldEnabled)
         {
             Shield(false);
-            Debug.Log("asdf");
             shieldEnabled = false;
             timeCooldown = Time.time;
+        }
+
+        if (cooldownTimer(1f, displayTimer) && !shieldEnabled && displayCooldown > 0)
+        {
+            displayCooldown--;
+            GameObject.Find("ShieldCooldown").GetComponent<UnityEngine.UI.Text>().text = displayCooldown.ToString();
+            displayTimer = Time.time;
+
+        }
+        if (shieldEnabled)
+        {
+            displayCooldown = cooldown;
+            GameObject.Find("ShieldCooldown").GetComponent<UnityEngine.UI.Text>().text = displayCooldown.ToString();
         }
     }
 

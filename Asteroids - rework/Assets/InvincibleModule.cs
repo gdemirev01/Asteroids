@@ -7,6 +7,9 @@ public class InvincibleModule : MonoBehaviour {
     public int cooldown;
     public int duration;
 
+    private int displayCooldown;
+    private float displayTimer;
+
     bool InvincibleEnabled = false;
 
     private float timeCooldown;
@@ -15,7 +18,10 @@ public class InvincibleModule : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        GameObject.Find("InvincibleCooldown").GetComponent<UnityEngine.UI.Text>().text = cooldown.ToString();
         float timeCooldown = Time.time;
+        float displayTimer = Time.time;
+        displayCooldown = cooldown;
     }
 
     // Update is called once per frame
@@ -23,7 +29,6 @@ public class InvincibleModule : MonoBehaviour {
     {
         if (Input.GetButtonDown("Invincible") && cooldownTimer(cooldown, timeCooldown))
         {
-            Debug.Log("ON");
             Invincible(false);
             InvincibleEnabled = true;
             timeDuration = Time.time;
@@ -33,6 +38,19 @@ public class InvincibleModule : MonoBehaviour {
             Invincible(true);
             InvincibleEnabled = false;
             timeCooldown = Time.time;
+        }
+
+        if (cooldownTimer(1f, displayTimer) && !InvincibleEnabled && displayCooldown > 0)
+        {
+            displayCooldown--;
+            GameObject.Find("InvincibleCooldown").GetComponent<UnityEngine.UI.Text>().text = displayCooldown.ToString();
+            displayTimer = Time.time;
+
+        }
+        if(InvincibleEnabled)
+        {
+            displayCooldown = cooldown;
+            GameObject.Find("InvincibleCooldown").GetComponent<UnityEngine.UI.Text>().text = displayCooldown.ToString();
         }
     }
 
@@ -45,6 +63,7 @@ public class InvincibleModule : MonoBehaviour {
     {
         if (Time.time >= time + offset)
         {
+            Debug.Log("asdf");
             time = Time.time;
             return true;
         }
