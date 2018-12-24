@@ -39,7 +39,7 @@ public class ShieldModule : MonoBehaviour {
     public void Shield(bool enable)
     {
         GetComponent<MeshRenderer>().enabled = enable;
-        GetComponent<MeshRenderer>().enabled = enable;
+        GetComponent<Collider>().enabled = enable;
     }
 
     bool cooldownTimer(float offset, float time)

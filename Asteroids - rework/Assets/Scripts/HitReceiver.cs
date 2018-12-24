@@ -12,8 +12,26 @@ public class HitReceiver : MonoBehaviour {
 
     public void ReceiveHit(GameObject damageDealer)
 	{
-        var damageDealt = damageDealer.GetComponent<GameObjectDetails>().damageDeal;
-        GetComponent<GameObjectDetails>().health -= damageDealt;
+        if(tag == "Player" && transform.FindChild("ShieldModule"))
+        {
+
+            if (GameObject.Find("ShieldModule").GetComponent<Collider>().enabled == true)
+            {
+                Debug.Log("are we there yet?");
+                
+            }
+            else
+            {
+                var damageDealt = damageDealer.GetComponent<GameObjectDetails>().damageDeal;
+                GetComponent<GameObjectDetails>().health -= damageDealt;
+            }
+        }
+        else
+        {
+            var damageDealt = damageDealer.GetComponent<GameObjectDetails>().damageDeal;
+            GetComponent<GameObjectDetails>().health -= damageDealt;
+        }
+        
         if (GetComponent<GameObjectDetails>().health <= 0 && this.tag == "Asteroid")
         {
             DestroyObject(damageDealer);
