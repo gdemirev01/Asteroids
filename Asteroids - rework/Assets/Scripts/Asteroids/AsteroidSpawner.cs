@@ -16,6 +16,7 @@ public class AsteroidSpawner : MonoBehaviour
     public float PlayableGridCellSize = 2.2f;
     public int PlayerSafeCells = 1;
     public bool ShowDebugDraw = false;
+    public int secondsUntilStart;
 
     GameObject PlayerShip = null;
     PlayableGridCell[,] PlayableAreaGrid = null;
@@ -47,8 +48,9 @@ public class AsteroidSpawner : MonoBehaviour
 
     }
 
-    void Update()
+    private IEnumerator init()
     {
+        yield return new WaitForSeconds(secondsUntilStart);
         if (PlayerShip != null && !IsSpawningFinished)
         {
             CreatePlayableGrid();
@@ -61,6 +63,13 @@ public class AsteroidSpawner : MonoBehaviour
             IsSpawningFinished = false;
             time = Time.time;
         }
+    }
+
+    void Update()
+    {
+        
+        StartCoroutine(init());
+
     }
     private void MarkPlayerSafeArea()
     {
