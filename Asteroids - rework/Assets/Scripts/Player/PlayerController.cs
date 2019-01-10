@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static bool controlsType = false;
     public float PlayerSpeed = 0.2f;
+    public float rotationSpeed = 2f;
 
     private void Start()
     {
@@ -18,7 +20,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        MoveShipWithPhysics();
+        if (controlsType)
+            MoveShipWithPhysicsKeyboard();
+        else
+            MoveShipWIthPhysicsMouse();
     }
 
     private void Update()
@@ -35,7 +40,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void MoveShipWithPhysics()
+    private void MoveShipWithPhysicsKeyboard()
+    {
+        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("Horizontal");
+
+        Quaternion newRotation = transform.rotation;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (horizontalInput != 0)
+        {
+            newRotation = Quaternion.Euler(new Vector3(0, horizontalInput * rotationSpeed, 0)); ;
+            rb.MoveRotation(rb.rotation * newRotation);
+        }
+
+        Vector3 direction = new Vector3(0, 0, verticalInput);
+        direction = transform.rotation * direction;
+        direction = direction * PlayerSpeed * Time.deltaTime;
+
+        rb.MovePosition(transform.position + direction);
+
+    }
+
+    private void MoveShipWIthPhysicsMouse()
     {
         float verticalInput = Input.GetAxis("Vertical");
         float horizontalInput = Input.GetAxis("Horizontal");

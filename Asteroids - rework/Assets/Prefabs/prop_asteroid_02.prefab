@@ -115,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cfeb162fa247f41bed5d53ef9b2947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagToHit: Player
+  TagsToHit:
+  - Player
   DestructionFX: {fileID: 100004, guid: 2857e183f4cd3df4e9096e5b578bd32f, type: 2}
   DestructionFXDuration: 0.5
 --- !u!114 &114338395537734286

@@ -13,7 +13,7 @@ public class GameState : MonoBehaviour {
         CheckState();
 	}
 
-    void CheckState()
+    public void CheckState()
     {
         if (score >= winScore)
         {

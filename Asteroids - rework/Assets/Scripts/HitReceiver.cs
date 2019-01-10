@@ -32,8 +32,9 @@ public class HitReceiver : MonoBehaviour {
             GetComponent<GameObjectDetails>().health -= damageDealt;
         }
         
-        if (GetComponent<GameObjectDetails>().health <= 0 && this.tag == "Asteroid")
+        if (GetComponent<GameObjectDetails>().health <= 0)
         {
+            GameObject.Find("EventSystem").GetComponent<GameState>().CheckState();
             DestroyObject(damageDealer);
             GameState.score += GetComponent<GameObjectDetails>().points;
         }

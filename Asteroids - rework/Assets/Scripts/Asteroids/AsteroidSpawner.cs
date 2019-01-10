@@ -142,7 +142,7 @@ public class AsteroidSpawner : MonoBehaviour
         }
     }
 
-    private List<Vector3> FindFreePositions(uint requestedPositionsCnt)
+    public List<Vector3> FindFreePositions(uint requestedPositionsCnt)
     {
         //Create a list of all guaranteedly unoccupied cells
         List<PlayableGridCell> freeCells = new List<PlayableGridCell>();

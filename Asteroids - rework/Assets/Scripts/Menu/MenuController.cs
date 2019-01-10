@@ -16,6 +16,12 @@ public class MenuController : MonoBehaviour {
 
     }
 
+    public void ChooseControls()
+    {
+
+        PlayerController.controlsType = !PlayerController.controlsType;
+    }
+
     public void EndGame()
     {
         Application.Quit();

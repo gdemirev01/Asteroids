@@ -63,7 +63,6 @@ public class InvincibleModule : MonoBehaviour {
     {
         if (Time.time >= time + offset)
         {
-            Debug.Log("asdf");
             time = Time.time;
             return true;
         }
