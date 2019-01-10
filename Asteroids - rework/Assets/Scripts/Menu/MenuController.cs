@@ -24,7 +24,14 @@ public class MenuController : MonoBehaviour {
     public void Back()
     {
         GameObject.Find("SettingsMenu").GetComponent<Canvas>().enabled = false;
+        GameObject.Find("ShopMenu").GetComponent<Canvas>().enabled = false;
         GameObject.Find("Main").GetComponent<Canvas>().enabled = true;
+    }
+
+    public void Shop()
+    {
+        GameObject.Find("ShopMenu").GetComponent<Canvas>().enabled = true;
+        GameObject.Find("Main").GetComponent<Canvas>().enabled = false;
     }
 
     public void Settings()

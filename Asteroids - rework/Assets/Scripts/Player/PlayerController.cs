@@ -33,10 +33,13 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateShootInputs()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Weapon1"))
         {
-            Debug.Log("FIre ttttttt ");
-            GetComponent<Weapon>().Shoot();
+            transform.Find("Laser").GetComponent<Weapon>().Shoot();
+        }
+        else if(Input.GetButtonDown("Weapon2"))
+        {
+            transform.Find("RocketLauncher").GetComponent<Weapon>().Shoot();
         }
     }
 

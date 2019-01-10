@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114000011651743184}
   - component: {fileID: 111000011087569900}
   - component: {fileID: 82000010093622170}
+  - component: {fileID: 136487635495449988}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -580,3 +581,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Radius: 2
   Force: 50
+--- !u!136 &136487635495449988
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010608846784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.5
+  m_Height: 2.994084
+  m_Direction: 1
+  m_Center: {x: -0.0000007748603, y: 0, z: 0}

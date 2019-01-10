@@ -41,7 +41,10 @@ public class HitReceiver : MonoBehaviour {
             GameState.score += GetComponent<GameObjectDetails>().points;
             GameInfo.money += GetComponent<GameObjectDetails>().moneyToGive;
             moneyCollected += GetComponent<GameObjectDetails>().moneyToGive;
-            GameObject.Find("Money").GetComponent<Text>().text = moneyCollected.ToString();
+            var allMoney = 0;
+            int.TryParse(GameObject.Find("Money").GetComponent<Text>().text, out allMoney);
+            Debug.Log(allMoney);
+            GameObject.Find("Money").GetComponent<Text>().text = (allMoney + moneyCollected).ToString();
         }
     }
 

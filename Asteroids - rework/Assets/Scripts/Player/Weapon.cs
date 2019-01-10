@@ -12,8 +12,16 @@ public class Weapon : MonoBehaviour {
 
     private void Awake()
     {
-        ProjectileSpeed = GameInfo.projectileSpeed;
-        ShotsPerSecond = GameInfo.shotsPerSecond;
+        if (tag == "Projectile")
+        {
+            ProjectileSpeed = GameInfo.projectileSpeed;
+            ShotsPerSecond = GameInfo.shotsPerSecond;
+        }
+        else if(tag == "Rocket")
+        {
+            ProjectileSpeed = GameInfo.rocketSpeed;
+            ShotsPerSecond = GameInfo.rocketsPerSecond;
+        }
 
     }
 

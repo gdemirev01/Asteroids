@@ -18,7 +18,7 @@ public class TeleportModule : MonoBehaviour {
     void Start () {
         cooldown = GameInfo.teleportTimeCooldown;
         float timeCooldown = Time.time;
-        GameObject.Find("InvincibleCooldown").GetComponent<UnityEngine.UI.Text>().text = cooldown.ToString();
+        GameObject.Find("TeleportCooldown").GetComponent<UnityEngine.UI.Text>().text = cooldown.ToString();
         float displayTimer = Time.time;
         displayCooldown = cooldown;
     }

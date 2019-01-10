@@ -20,5 +20,9 @@ public class GameObjectDetails : MonoBehaviour {
         {
             damageDeal = GameInfo.damageOfWeapon;
         }
+        else if(tag == "Rocket")
+        {
+            damageDeal = GameInfo.damageOfRockets;
+        }
     }
 }

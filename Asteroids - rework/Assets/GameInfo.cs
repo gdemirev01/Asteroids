@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class GameInfo {
 
-    public static int money = 0;
+    public static int money = 1000;
 
     public static int record = 0;
 
@@ -12,7 +12,11 @@ public static class GameInfo {
 
     public static float projectileSpeed = 1000;
     public static float shotsPerSecond = 5;
-    public static int damageOfWeapon = 1;
+    public static int damageOfWeapon = 5;
+
+    public static float rocketSpeed = 700;
+    public static float rocketsPerSecond = 1;
+    public static int damageOfRockets = 20;
 
     public static int shieldTimeCooldown = 15;
     public static int shieldTimeDuration = 15;
