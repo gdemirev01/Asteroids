@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HitReceiver : MonoBehaviour {
 	public GameObject ObjectToSpawnOnDeath;
@@ -9,6 +10,7 @@ public class HitReceiver : MonoBehaviour {
 	public float DeflectionAngle = 45;
 	public float DestructionFXDuration = 0.5f;
 	public bool DebugDraw = false;
+    public int moneyCollected = 0;
 
     public void ReceiveHit(GameObject damageDealer)
 	{
@@ -37,6 +39,9 @@ public class HitReceiver : MonoBehaviour {
             GameObject.Find("EventSystem").GetComponent<GameState>().CheckState();
             DestroyObject(damageDealer);
             GameState.score += GetComponent<GameObjectDetails>().points;
+            GameInfo.money += GetComponent<GameObjectDetails>().moneyToGive;
+            moneyCollected += GetComponent<GameObjectDetails>().moneyToGive;
+            GameObject.Find("Money").GetComponent<Text>().text = moneyCollected.ToString();
         }
     }
 

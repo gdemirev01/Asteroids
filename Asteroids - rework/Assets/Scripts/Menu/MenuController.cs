@@ -18,8 +18,19 @@ public class MenuController : MonoBehaviour {
 
     public void ChooseControls()
     {
-
         PlayerController.controlsType = !PlayerController.controlsType;
+    }
+
+    public void Back()
+    {
+        GameObject.Find("SettingsMenu").GetComponent<Canvas>().enabled = false;
+        GameObject.Find("Main").GetComponent<Canvas>().enabled = true;
+    }
+
+    public void Settings()
+    {
+        GameObject.Find("SettingsMenu").GetComponent<Canvas>().enabled = true;
+        GameObject.Find("Main").GetComponent<Canvas>().enabled = false;
     }
 
     public void EndGame()

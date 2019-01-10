@@ -18,6 +18,8 @@ public class ShieldModule : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        cooldown = GameInfo.shieldTimeCooldown;
+        duration = GameInfo.shieldTimeDuration;
         float timeCooldown = Time.time;
         float displayTimer = Time.time;
         displayCooldown = cooldown;

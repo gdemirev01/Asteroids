@@ -10,6 +10,12 @@ public class Weapon : MonoBehaviour {
     public float ProjectileSpeed;
     public float ProjectileDuration;
 
+    private void Awake()
+    {
+        ProjectileSpeed = GameInfo.projectileSpeed;
+        ShotsPerSecond = GameInfo.shotsPerSecond;
+
+    }
 
     private float NextShotTime = 0.0f;
     private int ShieldDuration = 10;

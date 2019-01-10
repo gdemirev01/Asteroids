@@ -22,8 +22,6 @@ GameObject:
   - component: {fileID: 33471308171658548}
   - component: {fileID: 135240494346555622}
   - component: {fileID: 23785651691338982}
-  - component: {fileID: 114269373057403994}
-  - component: {fileID: 114552872554609532}
   m_Layer: 0
   m_Name: ShieldPowerUp
   m_TagString: Untagged
@@ -85,35 +83,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1713771555502506}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114269373057403994
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1713771555502506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8be34379abced64f94f1b7c2ee4c7d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114552872554609532
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1713771555502506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98183b7b50e98140a0806fe429030a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shieldDuration: 0
-  invisibleDuration: 0
-  invincibleDuration: 0
-  shieldCooldown: 0
-  teleportCooldown: 0
-  invisibleCooldown: 0
-  invincibleCooldown: 0
 --- !u!135 &135240494346555622
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -133,6 +133,7 @@ MonoBehaviour:
   DeflectionAngle: 45
   DestructionFXDuration: 0.5
   DebugDraw: 0
+  moneyCollected: 0
 --- !u!114 &114751481364062936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,6 +177,7 @@ MonoBehaviour:
   health: 20
   damageDeal: 15
   points: 5
+  moneyToGive: 5
 --- !u!135 &135847720574155092
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -135,6 +135,7 @@ MonoBehaviour:
   DeflectionAngle: 45
   DestructionFXDuration: 0.5
   DebugDraw: 0
+  moneyCollected: 0
 --- !u!114 &114322854501437288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,6 +165,7 @@ MonoBehaviour:
   health: 5
   damageDeal: 5
   points: 15
+  moneyToGive: 15
 --- !u!114 &114544070501362382
 MonoBehaviour:
   m_ObjectHideFlags: 1
