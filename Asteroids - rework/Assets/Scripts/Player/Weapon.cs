@@ -24,8 +24,8 @@ public class Weapon : MonoBehaviour {
         {
             ProjectileSpeed = GameInfo.rocketSpeed;
             ShotsPerSecond = GameInfo.rocketsPerSecond;
-            rocketsCount = GameInfo.rocketsCount;
         }
+        rocketsCount = GameInfo.rocketsCount;
 
     }
 

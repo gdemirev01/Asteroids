@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class GameInfo {
 
-    public static int money = 10000000;
+    public static int money = 1000;
 
     public static int record = 0;
 

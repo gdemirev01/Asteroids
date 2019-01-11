@@ -15,13 +15,13 @@ public class GameState : MonoBehaviour {
 
     public void CheckState()
     {
-        if (score >= winScore)
-        {
-            ResultsOfGame.result = "You Win";
-            ResultsOfGame.score = score;
-            score = 0;
-            SceneManager.LoadScene("ResultOfPlay", LoadSceneMode.Single);
-        }
+        //if (score >= winScore)
+        //{
+        //    ResultsOfGame.result = "You Win";
+        //    ResultsOfGame.score = score;
+        //    score = 0;
+        //    SceneManager.LoadScene("ResultOfPlay", LoadSceneMode.Single);
+        //}
         if (GameObject.Find("TUES_PlayerShip").GetComponent<GameObjectDetails>().health <= 0)
         {
             ResultsOfGame.result = "You Lose";
@@ -45,6 +45,7 @@ public class GameState : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            score = 0;
             SceneManager.LoadScene("Menu", LoadSceneMode.Single);
         }
     }

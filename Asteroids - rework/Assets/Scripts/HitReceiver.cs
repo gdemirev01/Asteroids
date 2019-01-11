@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HitReceiver : MonoBehaviour {
 	public GameObject ObjectToSpawnOnDeath;
+    public GameObject PowerUpToSpawnOnDeath;
 	public GameObject DestructionFX;
 	public float SpawnDistance = 2;
 	public float DeflectionAngle = 45;
@@ -39,6 +40,10 @@ public class HitReceiver : MonoBehaviour {
             GameObject.Find("EventSystem").GetComponent<GameState>().CheckState();
             DestroyObject(damageDealer);
             GameState.score += GetComponent<GameObjectDetails>().points;
+
+            if (GameState.score > GameInfo.record)
+                GameInfo.record = GameState.score;
+
             GameInfo.money += GetComponent<GameObjectDetails>().moneyToGive;
             moneyCollected += GetComponent<GameObjectDetails>().moneyToGive;
             var allMoney = 0;
@@ -50,7 +55,10 @@ public class HitReceiver : MonoBehaviour {
 
     void DestroyObject(GameObject damageDealer)
     {
-        if (ObjectToSpawnOnDeath != null)
+        var rand = Random.Range(0, 10);
+        Debug.Log(rand);
+
+        if (ObjectToSpawnOnDeath != null && rand != 7)
         {
             Vector3 hitDirection = transform.position - damageDealer.transform.position;
             hitDirection.Normalize();
@@ -60,6 +68,10 @@ public class HitReceiver : MonoBehaviour {
             }
             SpawnDeathObject(hitDirection, -DeflectionAngle);
             SpawnDeathObject(hitDirection, DeflectionAngle);
+        }
+        else if(rand == 7 && PowerUpToSpawnOnDeath)
+        {
+            Instantiate(PowerUpToSpawnOnDeath, transform.position, transform.rotation);
         }
         if (DestructionFX != null)
         {

@@ -157,6 +157,10 @@ Prefab:
       propertyPath: TagsToHit.Array.data[1]
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 0}
@@ -244,7 +248,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -299,6 +303,7 @@ MonoBehaviour:
   health: 0
   damageDeal: 10
   points: 0
+  moneyToGive: 0
 --- !u!136 &136207494274945516
 CapsuleCollider:
   m_ObjectHideFlags: 1

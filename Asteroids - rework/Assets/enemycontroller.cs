@@ -3,33 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class enemycontroller : MonoBehaviour {
-    GameObject player;
+    public GameObject player;
     float step;
     public float speed;
     float time;
     public float speedOfFire;
     Rigidbody rb;
+    public Vector3 InitialDirection = Vector3.zero;
     // Use this for initialization
 
     private void Start()
     {
-        AsteroidSpawner.Instance.RegisterPlayer(gameObject);
         player = GameObject.Find("TUES_PlayerShip");
-        step = speed * Time.deltaTime;
-        time = Time.time;
-        rb = GetComponent<Rigidbody>();
-    }
+        Vector3 direction3d = InitialDirection;
+        if (direction3d.sqrMagnitude < Mathf.Epsilon * Mathf.Epsilon)
+        {
 
-    void OnDestroy()
-    {
-        AsteroidSpawner.Instance.UnregisterPlayer(gameObject);
+            Vector2 direction2d = Random.insideUnitCircle;
+            direction2d.Normalize();
+            direction3d = new Vector3(direction2d.x, 0, direction2d.y);
+        }
+
+        var rb = GetComponent<Rigidbody>();
+        rb.velocity = direction3d * speed;
     }
 	
 	// Update is called once per frame
 	void Update () {
         Shoot();
         Move();
-
     }
 
     private void FixedUpdate()
@@ -38,17 +40,14 @@ public class enemycontroller : MonoBehaviour {
 
     void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.GetComponent<Transform>().position, step);
-        //rb.MovePosition(player.transform.position + transform.forward * step);
         transform.LookAt(player.transform);
-        //rb.AddForce(Vector3.forward * speed);
     }
 
     void Shoot()
     {
         if (Time.time > time + speedOfFire)
         {
-            transform.FindChild("Weapon").GetComponent<Weapon>().Shoot();
+            transform.Find("Weapon").GetComponent<Weapon>().Shoot();
             time = Time.time;
             Debug.Log(time);
         }

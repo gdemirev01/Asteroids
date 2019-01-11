@@ -66,10 +66,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-
         StartCoroutine(init());
-        Debug.Log(PlayerShip);
-
     }
 
     private void SpawnNewAsteroids()
@@ -78,7 +75,7 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log(enemyPositions);
         for (int i = 0; i < enemyPositions.Count; ++i)
         {
-            Instantiate(EnemyPrefab, enemyPositions[i], Random.rotation);
+            Instantiate(EnemyPrefab, enemyPositions[i], new Quaternion(0, 0, 0, 0));
         }
         
     }

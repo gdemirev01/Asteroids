@@ -146,6 +146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectToSpawnOnDeath: {fileID: 1557011993107598, guid: 9af72c7e78f4eb845ba45529c1ee3d28,
     type: 2}
+  PowerUpToSpawnOnDeath: {fileID: 1356158386189378, guid: bd4818106ef1da04482d023bde83a511,
+    type: 2}
   DestructionFX: {fileID: 100004, guid: 2857e183f4cd3df4e9096e5b578bd32f, type: 2}
   SpawnDistance: 2
   DeflectionAngle: 45

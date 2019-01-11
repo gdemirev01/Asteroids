@@ -33,10 +33,6 @@ public class DamageDealer : MonoBehaviour {
                 }
 
             }
-            else
-            {
-                Debug.Log("shit");
-            }
         }
 	}
 }
