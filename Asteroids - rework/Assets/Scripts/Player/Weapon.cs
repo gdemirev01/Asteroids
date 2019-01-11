@@ -9,6 +9,8 @@ public class Weapon : MonoBehaviour {
     public Transform SpawnPosition;
     public float ProjectileSpeed;
     public float ProjectileDuration;
+    public int rocketsCount;
+    public float cooldown;
 
     private void Awake()
     {
@@ -16,24 +18,31 @@ public class Weapon : MonoBehaviour {
         {
             ProjectileSpeed = GameInfo.projectileSpeed;
             ShotsPerSecond = GameInfo.shotsPerSecond;
+            rocketsCount = GameInfo.rocketsCount;
         }
         else if(tag == "Rocket")
         {
             ProjectileSpeed = GameInfo.rocketSpeed;
             ShotsPerSecond = GameInfo.rocketsPerSecond;
+            rocketsCount = GameInfo.rocketsCount;
         }
 
     }
 
-    private float NextShotTime = 0.0f;
-    private int ShieldDuration = 10;
+    public float NextShotTime = 0.0f;
+    //private int ShieldDuration = 10;
     
     public void Shoot()
     {
-        float cooldown = 1 / ShotsPerSecond;
+        cooldown = 1 / ShotsPerSecond;
+        
 
-        if (Time.time > NextShotTime)
+        if (Time.time > NextShotTime && rocketsCount > 0)
         {
+            if (tag == "Rocket")
+            {
+                rocketsCount--;
+            }
             GameObject projectile = Instantiate(ProjectileToSpawn, SpawnPosition.position, SpawnPosition.rotation);
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
 

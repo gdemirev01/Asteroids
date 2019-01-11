@@ -6,80 +6,112 @@ using UnityEngine.UI;
 public class ShopScript : MonoBehaviour
 {
 
-    private int valueLaser = 10;
-    private int valueRockets = 10;
-    private int valueShield = 10;
-    private int valueTeleport = 10;
-    private int valueHealth = 10;
-
-
-    private void Start()
-    {
-    }
-
     private void Update()
     {
         GameObject.Find("money").GetComponent<Text>().text = GameInfo.money.ToString();
+
+        GameObject.Find("RocketLabel").GetComponent<Text>().text = GameInfo.valueRockets.ToString();
+        GameObject.Find("HealthLabel").GetComponent<Text>().text = GameInfo.valueHealth.ToString();
+        GameObject.Find("ShieldLabel").GetComponent<Text>().text = GameInfo.valueShield.ToString();
+        GameObject.Find("TeleportLabel").GetComponent<Text>().text = GameInfo.valueTeleport.ToString();
+        GameObject.Find("LaserLabel").GetComponent<Text>().text = GameInfo.valueLaser.ToString();
     }
 
     public void UpdateRockets()
     {
-        if (GameInfo.money >= valueRockets)
+        if (GameInfo.money >= GameInfo.valueRockets)
         {
-            GameInfo.money -= valueRockets;
-            GameInfo.rocketSpeed += 100;
-            GameInfo.rocketsPerSecond += 1;
-            GameInfo.damageOfRockets += 5;
-            valueRockets += 50;
-            GameObject.Find("RocketLabel").GetComponent<Text>().text = valueRockets.ToString();
+            GameInfo.levelOfRockets++;
+            if(GameInfo.levelOfRockets <= 15)
+            {
+                GameInfo.money -= GameInfo.valueRockets;
+                Mathf.Clamp(GameInfo.rocketSpeed += 100, 500, 1500);
+                GameInfo.rocketsPerSecond += 1;
+                GameInfo.damageOfRockets += 5;
+                GameInfo.rocketsCount = GameInfo.rocketsCount += 2;
+                GameInfo.valueRockets += 50;
+            }
+            else
+            {
+                GameInfo.levelOfRockets = 16;
+            }
+            
         }
     }
 
     public void UpdateLaser()
     {
-        if (GameInfo.money >= valueLaser)
+        if (GameInfo.money >= GameInfo.valueLaser)
         {
-            GameInfo.money -= valueLaser;
-            GameInfo.projectileSpeed += 100;
-            GameInfo.shotsPerSecond += 1;
-            GameInfo.damageOfWeapon += 5;
-            valueLaser += 50;
-            GameObject.Find("LaserLabel").GetComponent<Text>().text = valueLaser.ToString();
+            GameInfo.levelOfLaser++;
+            if (GameInfo.levelOfLaser <= 15)
+            {
+                GameInfo.money -= GameInfo.valueLaser;
+                GameInfo.projectileSpeed += 100;
+                GameInfo.shotsPerSecond += 1;
+                GameInfo.damageOfWeapon += 5;
+                GameInfo.valueLaser += 50;
+            }
+            else
+            {
+                GameInfo.levelOfLaser = 16;
+            }
         }
     }
 
     public void UpdateShield()
     {
-        if (GameInfo.money >= valueShield)
+        if (GameInfo.money >= GameInfo.valueShield)
         {
-            GameInfo.money -= valueShield;
-            GameInfo.shieldTimeCooldown -= 1;
-            GameInfo.shieldTimeDuration += 1;
-            valueShield += 50;
-            GameObject.Find("ShieldLabel").GetComponent<Text>().text = valueShield.ToString();
+            GameInfo.levelOfShield++;
+            if (GameInfo.levelOfShield <= 15)
+            {
+                GameInfo.money -= GameInfo.valueShield;
+                GameInfo.shieldTimeCooldown -= 1;
+                GameInfo.shieldTimeDuration += 1;
+                GameInfo.valueShield += 50;
+            }
+            else
+            {
+                GameInfo.levelOfShield = 16;
+            }
         }
     }
 
     public void UpdateTeleport()
     {
-        if (GameInfo.money >= valueTeleport)
+        if (GameInfo.money >= GameInfo.valueTeleport)
         {
-            GameInfo.money -= valueTeleport;
-            GameInfo.teleportTimeCooldown -= 1;
-            valueTeleport += 50;
-            GameObject.Find("TeleportLabel").GetComponent<Text>().text = valueTeleport.ToString();
+            GameInfo.levelOfTeleport++;
+            if (GameInfo.levelOfTeleport <= 15)
+            {
+                GameInfo.money -= GameInfo.valueTeleport;
+                GameInfo.teleportTimeCooldown -= 1;
+                GameInfo.valueTeleport += 50;
+            }
+            else
+            {
+                GameInfo.levelOfTeleport = 16;
+            }
         }
 
     }
 
     public void UpdateHealth()
     {
-        if (GameInfo.money >= valueHealth)
+        if (GameInfo.money >= GameInfo.valueHealth)
         {
-            GameInfo.money -= valueHealth;
-            GameInfo.health += 100;
-            valueHealth += 50;
-            GameObject.Find("HealthLabel").GetComponent<Text>().text = valueHealth.ToString();
+            GameInfo.levelOfHealth++;
+            if (GameInfo.levelOfHealth <= 15)
+            {
+                GameInfo.money -= GameInfo.valueHealth;
+                GameInfo.health += 100;
+                GameInfo.valueHealth += 50;
+            }
+            else
+            {
+                GameInfo.levelOfHealth = 16;
+            }
         }
     }
 }

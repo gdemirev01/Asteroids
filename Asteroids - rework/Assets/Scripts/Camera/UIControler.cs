@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIControler : MonoBehaviour {
 
@@ -20,7 +21,9 @@ public class UIControler : MonoBehaviour {
             healthOfPlayer = GameObject.Find("TUES_PlayerShip").GetComponent<GameObjectDetails>().health;
 
 
-        transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "Health:     " + healthOfPlayer + "    Score:      " + score;
+        transform.Find("Stats").GetComponent<Text>().text = "Health:     " + healthOfPlayer + "    Score:      " + score;
+
+        GameObject.Find("RocketCooldown").GetComponent<Text>().text = GameObject.Find("RocketLauncher").GetComponent<Weapon>().rocketsCount.ToString();
         
 	}
 }
