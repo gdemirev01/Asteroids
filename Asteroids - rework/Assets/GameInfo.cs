@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public static class GameInfo {
 
     public static int money = 1000;
@@ -37,7 +38,4 @@ public static class GameInfo {
     public static int levelOfShield = 1;
     public static int levelOfTeleport = 1;
     public static int levelOfHealth = 1;
-
-
-
 }

@@ -21,6 +21,7 @@ public class ShopScript : MonoBehaviour
     {
         if (GameInfo.money >= GameInfo.valueRockets)
         {
+            SaveSystem.SavePlayer();
             GameInfo.levelOfRockets++;
             if(GameInfo.levelOfRockets <= 15)
             {
@@ -43,6 +44,7 @@ public class ShopScript : MonoBehaviour
     {
         if (GameInfo.money >= GameInfo.valueLaser)
         {
+            SaveSystem.SavePlayer();
             GameInfo.levelOfLaser++;
             if (GameInfo.levelOfLaser <= 15)
             {
@@ -63,6 +65,7 @@ public class ShopScript : MonoBehaviour
     {
         if (GameInfo.money >= GameInfo.valueShield)
         {
+            SaveSystem.SavePlayer();
             GameInfo.levelOfShield++;
             if (GameInfo.levelOfShield <= 15)
             {
@@ -82,6 +85,7 @@ public class ShopScript : MonoBehaviour
     {
         if (GameInfo.money >= GameInfo.valueTeleport)
         {
+            SaveSystem.SavePlayer();
             GameInfo.levelOfTeleport++;
             if (GameInfo.levelOfTeleport <= 15)
             {
@@ -101,6 +105,7 @@ public class ShopScript : MonoBehaviour
     {
         if (GameInfo.money >= GameInfo.valueHealth)
         {
+            SaveSystem.SavePlayer();
             GameInfo.levelOfHealth++;
             if (GameInfo.levelOfHealth <= 15)
             {

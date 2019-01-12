@@ -47,7 +47,7 @@ public class PanelManager : MonoBehaviour {
 		SetSelected(go);
 	}
 
-	static GameObject FindFirstEnabledSelectable (GameObject gameObject)
+	 GameObject FindFirstEnabledSelectable (GameObject gameObject)
 	{
 		GameObject go = null;
 		var selectables = gameObject.GetComponentsInChildren<Selectable> (true);

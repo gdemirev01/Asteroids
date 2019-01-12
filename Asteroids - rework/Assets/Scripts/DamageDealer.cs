@@ -31,7 +31,6 @@ public class DamageDealer : MonoBehaviour {
                 {
                     Destroy(collision.gameObject);
                 }
-
             }
         }
 	}

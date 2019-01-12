@@ -48,14 +48,13 @@ public class HitReceiver : MonoBehaviour {
             moneyCollected += GetComponent<GameObjectDetails>().moneyToGive;
             var allMoney = 0;
             int.TryParse(GameObject.Find("Money").GetComponent<Text>().text, out allMoney);
-            Debug.Log(allMoney);
             GameObject.Find("Money").GetComponent<Text>().text = (allMoney + moneyCollected).ToString();
         }
     }
 
     void DestroyObject(GameObject damageDealer)
     {
-        var rand = Random.Range(0, 10);
+        var rand = Random.Range(1, 10);
         Debug.Log(rand);
 
         if (ObjectToSpawnOnDeath != null && rand != 7)

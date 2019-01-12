@@ -69,7 +69,7 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 		m_DraggingIcons[eventData.pointerId] = null;
 	}
 
-	static public T FindInParents<T>(GameObject go) where T : Component
+	 public T FindInParents<T>(GameObject go) where T : Component
 	{
 		if (go == null) return null;
 		var comp = go.GetComponent<T>();
