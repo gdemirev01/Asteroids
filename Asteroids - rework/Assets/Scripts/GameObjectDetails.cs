@@ -13,7 +13,7 @@ public class GameObjectDetails : MonoBehaviour {
     {
         if(tag == "Player")
         {
-            health = GameInfo.health;
+            health = 100 + GameInfo.health;
             Debug.Log(health);
         }
         else if(tag == "Projectile")

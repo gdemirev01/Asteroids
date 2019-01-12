@@ -81,7 +81,7 @@ public class PlayerData
 
         GameInfo.record = record;
 
-        GameInfo.health = record;
+        GameInfo.health = health;
 
         GameInfo.volume = volume;
 

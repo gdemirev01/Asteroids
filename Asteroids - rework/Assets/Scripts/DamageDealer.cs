@@ -12,6 +12,21 @@ public class DamageDealer : MonoBehaviour {
 	{
         foreach (string x in TagsToHit)
         {
+            if (collision.gameObject.tag == "Projectile" && tag == "Rocket")
+            {
+                Destroy(collision.gameObject);
+                Destroy(this.gameObject);
+                if (DestructionFX != null)
+                {
+                    GameObject spawnedFX = Instantiate(DestructionFX, transform.position, Random.rotation);
+                    Destroy(spawnedFX, DestructionFXDuration);
+                }
+            }
+            if (collision.gameObject.tag == "Projectile" && tag == "Projectile")
+            {
+                Destroy(collision.gameObject);
+                Destroy(this.gameObject);
+            }
             if (collision.gameObject.tag.Equals(x))
 
             {
@@ -25,7 +40,6 @@ public class DamageDealer : MonoBehaviour {
                 if (hitReceiver)
                 {
                     hitReceiver.ReceiveHit(gameObject);
-
                 }
                 else
                 {

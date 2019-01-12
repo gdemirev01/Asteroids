@@ -15,6 +15,8 @@ public class ShieldModule : MonoBehaviour {
     private float timeCooldown;
     private float timeDuration;
 
+    private bool firstLaunch = true;
+
     // Use this for initialization
     void Start()
     {
@@ -23,13 +25,20 @@ public class ShieldModule : MonoBehaviour {
         float timeCooldown = Time.time;
         float displayTimer = Time.time;
         displayCooldown = cooldown;
-        GameObject.Find("ShieldCooldown").GetComponent<UnityEngine.UI.Text>().text = cooldown.ToString();
+        GameObject.Find("ShieldCooldown").GetComponent<UnityEngine.UI.Text>().text = "0";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Shield") && cooldownTimer(cooldown, timeCooldown))
+        if(Input.GetButtonDown("Shield") && firstLaunch)
+        {
+            Shield(true);
+            shieldEnabled = true;
+            timeDuration = Time.time;
+            firstLaunch = false;
+        }
+        else if (Input.GetButtonDown("Shield") && cooldownTimer(cooldown, timeCooldown))
         {
             Shield(true);
             shieldEnabled = true;
@@ -42,7 +51,7 @@ public class ShieldModule : MonoBehaviour {
             timeCooldown = Time.time;
         }
 
-        if (cooldownTimer(1f, displayTimer) && !shieldEnabled && displayCooldown > 0)
+        if (cooldownTimer(1f, displayTimer) && !shieldEnabled && displayCooldown > 0 && !firstLaunch)
         {
             displayCooldown--;
             GameObject.Find("ShieldCooldown").GetComponent<UnityEngine.UI.Text>().text = displayCooldown.ToString();

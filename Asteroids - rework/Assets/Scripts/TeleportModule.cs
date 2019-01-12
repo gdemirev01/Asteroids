@@ -14,18 +14,29 @@ public class TeleportModule : MonoBehaviour {
 
     bool teleportEnabled = false;
 
+    private bool firstLaunch = true;
+
     // Use this for initialization
     void Start () {
         cooldown = GameInfo.teleportTimeCooldown;
         float timeCooldown = Time.time;
-        GameObject.Find("TeleportCooldown").GetComponent<UnityEngine.UI.Text>().text = cooldown.ToString();
+        GameObject.Find("TeleportCooldown").GetComponent<UnityEngine.UI.Text>().text = "0";
         float displayTimer = Time.time;
         displayCooldown = cooldown;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Teleport") && cooldownTimer(cooldown, timeCooldown))
+
+        if (Input.GetButtonDown("Teleport") && firstLaunch)
+        {
+            Teleport();
+            teleportEnabled = true;
+            timeCooldown = Time.time;
+            firstLaunch = false;
+        }
+
+        else if (Input.GetButtonDown("Teleport") && cooldownTimer(cooldown, timeCooldown))
         {
             Teleport();
             teleportEnabled = true;
@@ -39,7 +50,7 @@ public class TeleportModule : MonoBehaviour {
             teleportEnabled = false;
         }
 
-        if (cooldownTimer(1f, displayTimer) && !teleportEnabled && displayCooldown > 0)
+        if (cooldownTimer(1f, displayTimer) && !teleportEnabled && displayCooldown > 0 && !firstLaunch)
         {
             displayCooldown--;
             GameObject.Find("TeleportCooldown").GetComponent<UnityEngine.UI.Text>().text = displayCooldown.ToString();
