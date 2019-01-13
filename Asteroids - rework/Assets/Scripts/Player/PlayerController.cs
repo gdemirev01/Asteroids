@@ -36,6 +36,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Weapon1"))
         {
             transform.Find("Laser").GetComponent<Weapon>().Shoot();
+            if(GameInfo.levelOfLaser > 6)
+            {
+                transform.Find("LaserSecond").GetComponent<Weapon>().Shoot();
+            }
+            if(GameInfo.levelOfLaser > 10)
+            {
+                transform.Find("LaserThird").GetComponent<Weapon>().Shoot();
+
+            }
         }
         else if(Input.GetButtonDown("Weapon2"))
         {

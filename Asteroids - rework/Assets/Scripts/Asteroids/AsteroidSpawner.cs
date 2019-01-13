@@ -24,6 +24,9 @@ public class AsteroidSpawner : MonoBehaviour
     private float time;
     public float timeBetweenSpawns;
 
+    public int healthOfAsteroids = 20;
+    public int damageDealOfAsteroids = 15;
+
     public void RegisterPlayer(GameObject playerObject)
     {
         PlayerShip = playerObject;
@@ -71,6 +74,7 @@ public class AsteroidSpawner : MonoBehaviour
         StartCoroutine(init());
 
     }
+
     private void MarkPlayerSafeArea()
     {
         Vector2Int playerGridPos = GetCellCoordinates(PlayerShip.transform.position);
@@ -138,7 +142,10 @@ public class AsteroidSpawner : MonoBehaviour
         List<Vector3> asteroidPositions = FindFreePositions(AsteroidsCount);
         for (int i = 0; i < asteroidPositions.Count; ++i)
         {
-            Instantiate(AsteroidPrefab, asteroidPositions[i], Random.rotation);
+            GameObject asteroid = Instantiate(AsteroidPrefab, asteroidPositions[i], Random.rotation);
+            var details = asteroid.GetComponent<GameObjectDetails>();
+            details.health = healthOfAsteroids;
+            details.damageDeal = damageDealOfAsteroids;
         }
     }
 

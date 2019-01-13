@@ -371,6 +371,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winScore: 10000
+--- !u!1 &607510484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 607510486}
+  - component: {fileID: 607510485}
+  m_Layer: 0
+  m_Name: DifficultyController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &607510485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 607510484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60c7389bda610b48a3cce88bebda69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &607510486
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 607510484}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.03561364, z: -0.08470845}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &703518448
 Prefab:
   m_ObjectHideFlags: 0
@@ -516,7 +556,18 @@ Prefab:
       propertyPath: m_Name
       value: TUES_PlayerShip
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114000974192707102, guid: f0fe9f2aafe4105479e55e71d0696143,
+        type: 2}
+      propertyPath: ShotsPerSecond
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000974192707102, guid: f0fe9f2aafe4105479e55e71d0696143,
+        type: 2}
+      propertyPath: ProjectileSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114000974192707102, guid: f0fe9f2aafe4105479e55e71d0696143, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f0fe9f2aafe4105479e55e71d0696143, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &874588871
@@ -915,6 +966,57 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1430596763}
+--- !u!1 &1716586378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1189576264851406, guid: f0fe9f2aafe4105479e55e71d0696143,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1716586379}
+  - component: {fileID: 1716586380}
+  m_Layer: 0
+  m_Name: LaserSecond
+  m_TagString: Projectile
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1716586379
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4216658544549136, guid: f0fe9f2aafe4105479e55e71d0696143,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1716586378}
+  m_LocalRotation: {x: -1.7763568e-15, y: 0.12695907, z: -1.110223e-15, w: 0.991908}
+  m_LocalPosition: {x: 1.08, y: 0, z: 3.01}
+  m_LocalScale: {x: 0.999997, y: 0.999997, z: 0.999997}
+  m_Children: []
+  m_Father: {fileID: 1988017776}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 14.588, z: 0}
+--- !u!114 &1716586380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114294714310566470, guid: f0fe9f2aafe4105479e55e71d0696143,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1716586378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc633568b48a6640afa7e2bfa0e92e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShotsPerSecond: 10
+  ProjectileToSpawn: {fileID: 100000, guid: 11e27c26ac87b40f0a62ec40d7261989, type: 2}
+  SpawnPosition: {fileID: 1716586379}
+  ProjectileSpeed: 1000
+  ProjectileDuration: 1
+  rocketsCount: 0
+  cooldown: 0
+  NextShotTime: 0
 --- !u!1 &1775103480
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,8 +1082,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1988017776 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4868794719270232, guid: f0fe9f2aafe4105479e55e71d0696143,
+    type: 2}
+  m_PrefabInternal: {fileID: 844857391}
 --- !u!224 &2077132553 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224363917569402994, guid: e1c2b479bb99b144f9fd149bf1af6aa7,
     type: 2}
   m_PrefabInternal: {fileID: 874588871}
+--- !u!1 &2084483029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1189576264851406, guid: f0fe9f2aafe4105479e55e71d0696143,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2084483030}
+  - component: {fileID: 2084483031}
+  m_Layer: 0
+  m_Name: LaserThird
+  m_TagString: Projectile
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2084483030
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4216658544549136, guid: f0fe9f2aafe4105479e55e71d0696143,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2084483029}
+  m_LocalRotation: {x: 3.5527137e-15, y: -0.09898612, z: 4.440892e-16, w: 0.9950889}
+  m_LocalPosition: {x: -1.57, y: 0, z: 3.01}
+  m_LocalScale: {x: 0.999997, y: 0.999997, z: 0.999997}
+  m_Children: []
+  m_Father: {fileID: 1988017776}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: -11.362, z: 0}
+--- !u!114 &2084483031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114294714310566470, guid: f0fe9f2aafe4105479e55e71d0696143,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2084483029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc633568b48a6640afa7e2bfa0e92e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShotsPerSecond: 10
+  ProjectileToSpawn: {fileID: 100000, guid: 11e27c26ac87b40f0a62ec40d7261989, type: 2}
+  SpawnPosition: {fileID: 2084483030}
+  ProjectileSpeed: 1000
+  ProjectileDuration: 1
+  rocketsCount: 0
+  cooldown: 0
+  NextShotTime: 0
