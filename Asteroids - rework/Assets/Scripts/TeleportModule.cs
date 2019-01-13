@@ -30,19 +30,23 @@ public class TeleportModule : MonoBehaviour {
 
         if (Input.GetButtonDown("Teleport") && firstLaunch)
         {
-            Teleport();
-            teleportEnabled = true;
-            timeCooldown = Time.time;
-            firstLaunch = false;
+            if (Teleport())
+            {
+                teleportEnabled = true;
+                timeCooldown = Time.time;
+                firstLaunch = false;
+            }
         }
 
         else if (Input.GetButtonDown("Teleport") && cooldownTimer(cooldown, timeCooldown))
         {
-            Teleport();
-            teleportEnabled = true;
-            timeCooldown = Time.time;
-
+            if (Teleport())
+            {
+                teleportEnabled = true;
+                timeCooldown = Time.time;
+            }
         }
+
         if (teleportEnabled)
         {
             displayCooldown = cooldown;
@@ -59,17 +63,20 @@ public class TeleportModule : MonoBehaviour {
         
     }
 
-    public void Teleport()
+    public bool Teleport()
     {
-        float playerCameraOffset = Camera.main.transform.position.y - transform.position.y;
-        Vector3 mousePositionScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, playerCameraOffset);
-        Vector3 mousePositionWorldSpace = Camera.main.ScreenToWorldPoint(mousePositionScreenSpace);
+        bool isTeleported = false;
 
         float verticalInput = Input.GetAxis("Vertical");
         float horizontalInput = Input.GetAxis("Horizontal");
 
         if (verticalInput != 0 || horizontalInput != 0)
-            GameObject.Find("TUES_PlayerShip").transform.position = mousePositionWorldSpace;
+        {
+            GameObject.Find("TUES_PlayerShip").transform.position = this.gameObject.transform.position;
+            isTeleported = true;
+        }
+
+        return isTeleported;
     }
 
     bool cooldownTimer(float offset, float time)

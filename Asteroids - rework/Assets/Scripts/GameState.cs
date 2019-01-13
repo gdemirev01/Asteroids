@@ -7,6 +7,7 @@ public class GameState : MonoBehaviour {
 
     public int winScore = 100;
     public static int score;
+    public bool isPaused = false;
 
     // Update is called once per frame
     void Update () {
@@ -31,18 +32,22 @@ public class GameState : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if (Time.timeScale == 0)
+            if (isPaused)
             {
-                transform.GetChild(0).gameObject.SetActive(false);
+                GetComponent<MenuController>().PauseGame(false);
                 Time.timeScale = 1;
+                GameObject.Find("TUES_PlayerShip").GetComponent<PlayerController>().enabled = true;
+                isPaused = false;
             }
             else
             {
-                transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = "Pause";
-                transform.GetChild(0).gameObject.SetActive(true);
+                GetComponent<MenuController>().PauseGame(true);
                 Time.timeScale = 0;
+                GameObject.Find("TUES_PlayerShip").GetComponent<PlayerController>().enabled = false;
+                isPaused = true;
             }
         }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             score = 0;

@@ -15,7 +15,7 @@ public class HitReceiver : MonoBehaviour {
 
     public void ReceiveHit(GameObject damageDealer)
 	{
-        if(tag == "Player" && transform.FindChild("ShieldModule"))
+        if(tag == "Player" && transform.Find("ShieldModule"))
         {
 
             if (GameObject.Find("ShieldModule").GetComponent<Collider>().enabled == true)

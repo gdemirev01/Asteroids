@@ -8,7 +8,8 @@ public class MenuController : MonoBehaviour {
 
     private void Update()
     {
-        GameObject.Find("Record").GetComponent<Text>().text = "Record " + GameInfo.record.ToString();
+        if(GameObject.Find("Record"))
+            GameObject.Find("Record").GetComponent<Text>().text = "Record " + GameInfo.record.ToString();
     }
 
     public void StartGame()
@@ -21,8 +22,14 @@ public class MenuController : MonoBehaviour {
         SaveSystem.LoadPlayer();
     }
 
+    public void PauseGame(bool pause)
+    {
+        ToggleMenu("PauseMenu", pause);
+    }
+
     public void BackToMenu()
     {
+        Debug.Log("Menu");
         SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 
