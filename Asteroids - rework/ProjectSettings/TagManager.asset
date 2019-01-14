@@ -11,6 +11,8 @@ TagManager:
   - CanDestroy
   - Robot
   - Shield
+  - Rocket
+  - Health
   layers:
   - Default
   - TransparentFX
